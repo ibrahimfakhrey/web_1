@@ -10,9 +10,23 @@ users={
     "bosy":"0000",
     "merhan":"1122"
 }
+data={
 
+
+}
 
 @app.route("/",methods=["GET","POST"])
+def wall():
+    if request.method=="POST":
+        user_name=request.form.get("name")
+        user_comment=request.form.get("comment")
+        #write your code below
+        data[user_name]=user_comment
+        print(data)
+
+        return render_template("wall.html",items=data)
+    return render_template("lesson3.html")
+@app.route("/getting weather",methods=["GET","POST"])
 def start():
     if request.method=="POST":
         name=request.form.get("name")
